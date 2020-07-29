@@ -15,10 +15,10 @@ import org.springframework.stereotype.Repository;
 public class EmployeeDao {
 
     @Autowired
-    private JdbcTemplate jdbcTemplate = null;
+    private JdbcTemplate jdbcTemplate;
 
     public Employee get(Integer id) {
-        String sql = "select id,last_name lastName,email from employees where id=?";
+        String sql = "select id,last_name lastName,email,dept_id deptId from employee where id=?";
         RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
         Employee emp = jdbcTemplate.queryForObject(sql, rowMapper, id);
         return emp;

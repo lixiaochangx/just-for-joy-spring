@@ -1,7 +1,17 @@
 package com.xc.justforjoy.tx.xml.service;
 
+/**
+ * @author lxcecho
+ * @since 2020/7/26
+ */
 public interface BookShopService {
 
-	void purchase(String username,String isbn);
-	
+    /**
+     * purchase
+     *
+     * @param username
+     * @param isbn
+     */
+    void purchase(String username, String isbn);
+
 }

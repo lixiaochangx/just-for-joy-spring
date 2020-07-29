@@ -8,6 +8,12 @@ import java.util.List;
  */
 public interface Cashier {
 
-	void checkout(String username,List<String> isbns);
-	
+    /**
+     * checkout
+     *
+     * @param username
+     * @param isbns
+     */
+    void checkout(String username, List<String> isbns);
+
 }

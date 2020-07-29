@@ -1,13 +1,16 @@
 package com.xc.justforjoy.tx.xml.service.Impl;
 
+import com.xc.justforjoy.tx.xml.dao.BookShopDao;
+import com.xc.justforjoy.tx.xml.service.BookShopService;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.xc.spring.tx.xml.BookShopDao;
-import com.xc.spring.tx.xml.service.BookShopService;
-
-public class BookShopServiceImpl implements BookShopService{
+/**
+ * @author lxcecho
+ * @since 2020/7/26
+ */
+public class BookShopServiceImpl implements BookShopService {
 
 	private BookShopDao bookShopDao = null;
 	

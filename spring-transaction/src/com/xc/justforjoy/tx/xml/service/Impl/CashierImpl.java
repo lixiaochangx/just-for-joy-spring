@@ -5,6 +5,10 @@ import com.xc.justforjoy.tx.service.Cashier;
 
 import java.util.List;
 
+/**
+ * @author lxcecho
+ * @since 2020/7/26
+ */
 public class CashierImpl implements Cashier {
 
 	private BookShopService bookShopService = null;

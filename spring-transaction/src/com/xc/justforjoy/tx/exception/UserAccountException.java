@@ -28,7 +28,6 @@ public class UserAccountException extends RuntimeException{
 
 	public UserAccountException(Throwable cause) {
 		super(cause);
-		// TODO Auto-generated constructor stub
 	}
 
 }

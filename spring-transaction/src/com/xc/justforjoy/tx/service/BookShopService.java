@@ -6,6 +6,12 @@ package com.xc.justforjoy.tx.service;
  */
 public interface BookShopService {
 
-	void purchase(String username,String isbn);
-	
+    /**
+     * purchase
+     *
+     * @param username
+     * @param isbn
+     */
+    void purchase(String username, String isbn);
+
 }

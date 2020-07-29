@@ -27,10 +27,12 @@ public class TxTest {
         cashier = ctx.getBean(Cashier.class);
     }
 
-    //测试事物的传播行为
+    /**
+     * 测试事物的传播行为
+     */
     @Test
     public void testTransactionPropagation() {
-        cashier.checkout("AA", Arrays.asList("1001","1002"));
+        cashier.checkout("AA", Arrays.asList("1001", "1002"));
     }
 
     @Test
@@ -39,20 +41,26 @@ public class TxTest {
         bookShopService.purchase("AA", "1001");
     }
 
-    //测试获取书的单价的方法
+    /**
+     * 测试获取书的单价的方法
+     */
     @Test
     public void testBookShopDaoFindPriceByIsbn() {
         //根据书号查询书的单价
         System.out.println(bookShopDao.findBookPriceByIsbn("1001"));
     }
 
-    //测试更新库存方法
+    /**
+     * 测试更新库存方法
+     */
     @Test
     public void testBookShopDaoUpdateBookStock() {//每执行一次，库存-1
         bookShopDao.updateBookStock("1001");
     }
 
-    //测试更新账户余额办法
+    /**
+     * 测试更新账户余额办法
+     */
     @Test
     public void testBookShopDaoUpdateUserAccount() {
         bookShopDao.updateUserAccount("AA", 100);

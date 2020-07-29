@@ -20,7 +20,7 @@ public class BookShopServiceImpl implements BookShopService {
 
     /**
      * 添加事务注解
-     *
+     * <p>
      * 1.使用propagation 指定事务的传播行为，即当前的事务方法被另外一个事务方法调用时如何使用事务，
      * 默认值是REQUIRED,即使用调用方法的事务。
      * REQUIRED_NEW: 使用自己的事务，调用方法的事务被挂起。
@@ -31,14 +31,15 @@ public class BookShopServiceImpl implements BookShopService {
      * 这样可以帮助数据库引擎优化事务，若真的是一个只读取数据库值得方法，应设置readOnly=true。
      * 5.使用timeout 指定强制回滚之前事务可以占用的时间。（当sleep石家超过timeout时间时就会抛出异常）
      */
+    //单位是秒
     @Transactional(propagation = Propagation.REQUIRES_NEW,
             isolation = Isolation.READ_COMMITTED,
-            timeout = 1)//单位是秒
+            timeout = 1)
     @Override
     public void purchase(String username, String isbn) {
-        // TODO Auto-generated method stub
         try {
-            Thread.sleep(5000);//单位是毫秒
+            //单位是毫秒
+            Thread.sleep(5000);
         } catch (Exception e) {
             e.printStackTrace();
         }

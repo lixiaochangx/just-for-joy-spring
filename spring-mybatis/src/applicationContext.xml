@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 加载数据源文件 -->
+    <!--<bean id="config" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="locations" >
+            <list>
+                <value>classpath:db.properties</value>
+            </list>
+        </property>
+    </bean>-->
+
+    <!--或者-->
+    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+
+    <!-- 配置数据库连接池（使用C3P0） -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+        <property name="driverClass" value="${jdbc.driver}"></property>
+        <property name="jdbcUrl" value="${jdbc.url}"></property>
+        <property name="user" value="${jdbc.user}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <property name="initialPoolSize" value="${jdbc.initialPoolSize}"></property>
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+    </bean>
+
+    <!-- 将MyBatis使用的SQLSessionFactory对象，交给Spring来管理 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 数据库连接池 -->
+        <property name="dataSource" ref="dataSource"></property>
+        <!-- 加载mybatis全局配置文件 -->
+        <!-- <property name="configLocation" value="classpath:conf.xml"></property>
+         -->
+
+        <!-- 无需指定MyBatis配置文件conf.xml的路径，自动扫描mapping.xml文件 -->
+        <property name="mapperLocations" value="classpath:com/xc/justforjoy/mapper/StudentMapper.xml"></property>
+    </bean>
+
+    <!-- 方式三： -->
+    <!-- 通过Mapper扫描器MapperScannerConfiguration，批量将basePackage指定包中的DAO接口全部生成Mapper动态代理对象 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.xc.justforjoy.mapper"></property>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
+
+
+    <!-- 方式二： -->
+    <bean id="stuDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.xc.justforjoy.mapper.IStudentDao"></property>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
+
+    <!-- 方式一： -->
+    <!-- 配置Dao层：为StudentDaoImpl注入SqlSessionFactory对象 -->
+    <bean id="studentDao" class="com.xc.justforjoy.mapper.StudentDaoImpl">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
+
+
+</beans>

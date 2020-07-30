@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 注册调度工厂 -->
+	<!-- <bean id="schedulerFactoryBean" 
+	class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+	</bean> -->
+
+	<!-- 配置任务消息 -->
+	<bean id="scheduleJobEntity" class="com.xc.justforjoy.quartz02.ScheduleJob">
+		<property name="jobId" value="1001"></property>
+		<property name="jobName" value="任务1"></property>
+		<property name="jobGroup" value="任务组A"></property>
+		<property name="jobStatus" value="1"></property>
+		<property name="cronExpression" value="0/5 * * * * ?"></property>
+		<property name="desc" value="任务描述信息"></property>
+	</bean>
+	
+	<!-- 配置jobDetail -->
+	<bean id="jobDetail" 
+	class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<!-- 配置任务计划书 -->
+		<property name="jobClass"
+		value="com.xc.justforjoy.quartz02.PlanJobSpring">
+		</property>
+		<!-- 配置jobDataAsMap -->
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="scheduleJob">
+					<ref bean="scheduleJobEntity"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<!-- 配置CronTrigger类型的触发器 -->
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="jobDetail"/>
+		<!-- 配置CronTrigger表达式，表达式是在id为“scheduleJobEntity”中的
+		cronExpression属性中设置的 -->
+		<property name="cronExpression" value="#{scheduleJobEntity.cronExpression}"/>
+	</bean>
+	<!-- 配置调度工厂 -->
+	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<!-- 配置触发器 -->
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger"/>
+			</list>
+		</property>
+	</bean>
+	
+	
+</beans>

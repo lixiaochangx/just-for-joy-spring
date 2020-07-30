@@ -50,20 +50,20 @@ public class BookShopDaoImpl implements BookShopDao {
     /**
      * 更新用户的账户余额，使username的balance - price
      *
-     * @param username
+     * @param userName
      * @param price
      */
     @Override
-    public void updateUserAccount(String username, int price) {
+    public void updateUserAccount(String userName, int price) {
         // 验证余额是否足够，若不足则抛出异常
-        String sql2 = "select balance from account where username = ?";
-        int balance = jdbcTemplate.queryForObject(sql2, Integer.class, username);
+        String sql2 = "select balance from account where user_name = ?";
+        int balance = jdbcTemplate.queryForObject(sql2, Integer.class, userName);
         if (balance < price) {
             throw new UserAccountException("余额不足。。。");
         }
 
-        String sql = "update account set balance = balance - ? where username = ?";
-        jdbcTemplate.update(sql, price, username);
+        String sql = "update account set balance = balance - ? where user_name = ?";
+        jdbcTemplate.update(sql, price, userName);
     }
 
 }

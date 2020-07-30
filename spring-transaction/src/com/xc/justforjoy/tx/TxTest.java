@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.sql.DataSource;
 import java.util.Arrays;
 
 /**
@@ -15,10 +16,10 @@ import java.util.Arrays;
  */
 public class TxTest {
 
-    private ApplicationContext ctx = null;
-    private BookShopDao bookShopDao = null;
-    private BookShopService bookShopService = null;
-    Cashier cashier = null;
+    private ApplicationContext ctx;
+    private BookShopDao bookShopDao;
+    private BookShopService bookShopService;
+    Cashier cashier;
 
     {
         ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -54,7 +55,8 @@ public class TxTest {
      * 测试更新库存方法
      */
     @Test
-    public void testBookShopDaoUpdateBookStock() {//每执行一次，库存-1
+    public void testBookShopDaoUpdateBookStock() {
+        //每执行一次，库存-1
         bookShopDao.updateBookStock("1001");
     }
 
@@ -64,6 +66,18 @@ public class TxTest {
     @Test
     public void testBookShopDaoUpdateUserAccount() {
         bookShopDao.updateUserAccount("AA", 100);
+    }
+
+    /**
+     * 测试数据库是否连接成功
+     *
+     * @author lxcecho
+     * @since 2020/7/29
+     */
+    @Test
+    public void test() throws Exception {
+        DataSource dataSource = ctx.getBean(DataSource.class);
+        System.out.println(dataSource.getConnection());
     }
 
 }

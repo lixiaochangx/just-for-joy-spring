@@ -18,7 +18,7 @@ public class CashierImpl implements Cashier {
 	@Autowired
 	private BookShopService bookShopService = null;
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void checkout(String username, List<String> isbns) {
 		// 事务传播属性

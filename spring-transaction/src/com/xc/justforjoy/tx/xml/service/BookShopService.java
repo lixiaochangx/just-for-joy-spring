@@ -9,9 +9,9 @@ public interface BookShopService {
     /**
      * purchase
      *
-     * @param username
+     * @param userName
      * @param isbn
      */
-    void purchase(String username, String isbn);
+    void purchase(String userName, String isbn);
 
 }

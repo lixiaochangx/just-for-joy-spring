@@ -11,9 +11,9 @@ public interface Cashier {
     /**
      * checkout
      *
-     * @param username
+     * @param userName
      * @param isbns
      */
-    void checkout(String username, List<String> isbns);
+    void checkout(String userName, List<String> isbns);
 
 }

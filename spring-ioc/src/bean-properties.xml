@@ -8,7 +8,7 @@
     <!-- 导入属性文件 -->
     <context:property-placeholder location="classpath:dbconfig.properties"/>
 
-    <bean id="user" class="com.xc.justforjoy.spring.beans.entity.Book">
+    <bean id="user" class="com.xc.justforjoy.beans.entity.Book">
         <property name="name" value="《Thinking in Java》"></property>
         <property name="price" value="23"></property>
     </bean>

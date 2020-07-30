@@ -1,0 +1,14 @@
+CREATE TABLE `dept` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `name` varchar(128) DEFAULT NULL COMMENT '部门名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE `employee` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `last_name` varchar(64) DEFAULT NULL COMMENT '姓名',
+  `email` varchar(256) DEFAULT NULL COMMENT '邮箱',
+  `dept_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;

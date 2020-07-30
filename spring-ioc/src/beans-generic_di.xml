@@ -7,6 +7,6 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- base-package 属性指定一个需要扫描的基类包，Spring 容器将会扫描这个基类包里及其子包中的所有类.-->
-    <context:component-scan base-package="com.xc.justforjoy.spring.beans.generic_di"></context:component-scan>
+    <context:component-scan base-package="com.xc.justforjoy.beans.generic_di"></context:component-scan>
 
 </beans>

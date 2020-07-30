@@ -24,9 +24,9 @@ public interface BookShopDao {
     /**
      * 更新用户的账户余额，使username的balance - price
      *
-     * @param username
+     * @param userName
      * @param price
      */
-    void updateUserAccount(String username, int price);
+    void updateUserAccount(String userName, int price);
 
 }

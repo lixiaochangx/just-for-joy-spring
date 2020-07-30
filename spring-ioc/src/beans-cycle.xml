@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="car" class="com.xc.justforjoy.spring.beans.entity.Car"
+    <bean id="car" class="com.xc.justforjoy.beans.entity.Car"
           init-method="init2"
           destroy-method="destroy">
         <property name="brand" value="Audi"></property>
@@ -21,6 +21,6 @@
          甚至返回一个新的bean -->
 
     <!-- 配置bean的后置处理器：不需要配置id，IOC容器自动识别是一个BeanPostProcessor -->
-    <bean class="com.xc.justforjoy.spring.beans.cycle.MyBeanPostProcessor"></bean>
+    <bean class="com.xc.justforjoy.beans.cycle.MyBeanPostProcessor"></bean>
 
 </beans>

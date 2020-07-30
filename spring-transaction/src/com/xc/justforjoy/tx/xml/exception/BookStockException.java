@@ -6,9 +6,6 @@ package com.xc.justforjoy.tx.xml.exception;
  */
 public class BookStockException extends RuntimeException {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public BookStockException() {

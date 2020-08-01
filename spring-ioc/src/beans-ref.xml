@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--1. 在 IOC 容器中配置 bean 之间的关联关系-->
+
+    <bean id="helloDao" class="com.xc.justforjoy.ref.dao.impl.HelloDaoImpl"></bean>
+
+    <bean id="helloService" class="com.xc.justforjoy.ref.service.impl.HelloServiceImpl">
+        <property name="helloDao" ref="helloDao"></property>
+    </bean>
+
+    <bean id="helloController" class="com.xc.justforjoy.ref.controller.HelloContrller">
+        <property name="helloService" ref="helloService"></property>
+    </bean>
+
+</beans>

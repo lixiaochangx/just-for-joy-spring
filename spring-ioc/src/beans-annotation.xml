@@ -7,17 +7,17 @@
 
 	<!-- 指定SpringIOC容器扫描的包 -->
 	<!-- 可以通过resource-pattern指定扫描的资源 -->
-	<!-- <context:component-scan base-package="com.xc.justforjoy.beans.annotation"
+	<!-- <context:component-scan base-package="com.xc.justforjoy.annotation"
 	resource-pattern="repository/*.class"></context:component-scan> -->
 
-	<context:component-scan base-package="com.xc.justforjoy.beans.annotation"
+	<context:component-scan base-package="com.xc.justforjoy.annotation"
 	></context:component-scan>
 	
 	<!-- <context:exclude-filter>:子节点指定排除哪些指定的表达式的组件；
 		 <context:include-filter>:子节点指定包含哪些表达式的组件，该子节点 需要
 		 use-default-filters属性配合使用。
 	 -->
-	<context:component-scan base-package="com.xc.justforjoy.beans.annotation"
+	<context:component-scan base-package="com.xc.justforjoy.annotation"
 		use-default-filters="false">
 		
 		<!--<context:exclude-filter type="annotation"
@@ -28,11 +28,11 @@
 	 	
 	 	<!-- 默认：use-default-filters="true" -->
 	 	 <!--<context:exclude-filter type="annotation"
-	 		expression="com.xc.justforjoy.beans.annotation.repository.UserRepository"/>-->
+	 		expression="com.xc.justforjoy.annotation.repository.UserRepository"/>-->
 
 	 	 <!-- use-default-filters="false" -->
 	 	  <!--<context:include-filter type="annotation"
-	 	 expression="com.xc.justforjoy.beans.annotation.repository.UserRepository"/>-->
+	 	 expression="com.xc.justforjoy.annotation.repository.UserRepository"/>-->
 	</context:component-scan>
 	
 

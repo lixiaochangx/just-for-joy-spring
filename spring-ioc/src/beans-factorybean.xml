@@ -10,7 +10,7 @@
 
 		但实际返回确是FactoryBean的getObject()方法返回的实例。
 	 -->
-    <bean id="car" class="com.xc.justforjoy.beans.factorybean.CarFactory">
+    <bean id="car" class="com.xc.justforjoy.factorybean.CarFactory">
         <property name="brand" value="BMW"></property>
     </bean>
 

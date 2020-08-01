@@ -4,14 +4,21 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="address" class="com.xc.justforjoy.beans.entity.Address"
+    <!-- 自动装配: 只声明 bean, 而把 bean 之间的关系交给 IOC 容器来完成 -->
+    <!--
+        byType: 根据类型进行自动装配. 但要求 IOC 容器中只有一个类型对应的 bean, 若有多个则无法完成自动装配.
+        byName: 若属性名和某一个 bean 的 id 名一致, 即可完成自动装配. 若没有 id 一致的, 则无法完成自动装配
+    -->
+    <!-- 在使用 XML 配置时, 自动转配用的不多. 但在基于 注解 的配置时, 自动装配使用的较多.  -->
+
+    <bean id="address" class="com.xc.justforjoy.entity.Address"
           p:city="beijing" p:street="HuiLongGuan"></bean>
 
-    <bean id="car" class="com.xc.justforjoy.beans.entity.Car"
+    <bean id="car" class="com.xc.justforjoy.entity.Car"
           p:brand="Audi" p:price="300000">
     </bean>
 
-     <!--<bean id="person" class="com.xc.justforjoy.beans.entity.Person"
+     <!--<bean id="person" class="com.xc.justforjoy.entity.Person"
     p:name="Tom" p:address-ref="address" p:car-ref="car"></bean>-->
 
     <!-- 自动装配:可以使用autowire属性指定自动装配的方式，
@@ -19,7 +26,7 @@
         byType：根据bean的类型和当前的bean的属性的类型进行自动装配。
         若IOC容器中有一个以上的类型匹配的bean，则抛出异常。
      -->
-    <bean id="person" class="com.xc.justforjoy.beans.entity.Person"
+    <bean id="person" class="com.xc.justforjoy.entity.Person"
           p:name="Tom" autowire="byName"></bean>
 
 

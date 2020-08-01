@@ -10,17 +10,17 @@
     <bean id="address" p:city="GuangZhou" p:street="KeCun" abstract="true"></bean>
 
     <!-- bean配置的继承：使用bean的parent属性指定继承哪个bean的配置 -->
-    <bean id="address2" class="com.xc.justforjoy.beans.entity.Address"
+    <bean id="address2" class="com.xc.justforjoy.entity.Address"
           parent="address" p:city="shanghai" p:street="DaZhongSi"></bean>
 
-    <bean id="address3" class="com.xc.justforjoy.beans.entity.Address"
+    <bean id="address3" class="com.xc.justforjoy.entity.Address"
           parent="address2" p:city="ShenZhen" p:street="NanShan"></bean>
 
-    <bean id="car" class="com.xc.justforjoy.beans.entity.Car"
+    <bean id="car" class="com.xc.justforjoy.entity.Car"
           p:brand="Audi" p:price="300000"></bean>
 
     <!-- 要求在配置Person时，必须有一个关联的car，换句话说，person这个bean依赖于Car这个bean -->
-    <bean id="person" class="com.xc.justforjoy.beans.entity.Person"
+    <bean id="person" class="com.xc.justforjoy.entity.Person"
           p:name="Tom" p:address-ref="address2" depends-on="car"></bean>
 
 </beans>
